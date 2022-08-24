@@ -5,16 +5,16 @@ format gin response && validator transfer
 ```
 // We can omit c.Abort()
 func Test(c *gin.Context) {
-	h := new(dto.ParamTest)
-	if err := c.ShouldBindJSON(&h); err != nil {
-		zflag.Done(c, zflag.ParamErr(err))
-	} else {
-		if err := service.Test(c, h); err != nil {
-			zflag.Done(c, zflag.ResponseErr(zflag.ErrQuery.WithMessage(err.Error())))
-		} else {
-			zflag.Done(c, zflag.Success(zflag.EmptyData))
-		}
-	}
+    h := new(dto.ParamTest)
+    if err := c.ShouldBindJSON(&h); err != nil {
+        zflag.Done(c, zflag.ParamErr(err))
+    } else {
+        if err := service.Test(c, h); err != nil {
+            zflag.Done(c, zflag.ResponseErr(zflag.ErrQuery.WithMessage(err.Error())))
+        } else {
+            zflag.Done(c, zflag.Success(zflag.EmptyData))
+        }
+    }
 }
 
 // {"flag":1,"data":{},"message":"","detail":"","timestamp":""}
