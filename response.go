@@ -5,6 +5,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/go-playground/validator/v10"
 	"github.com/zohu/zlog"
+	"github.com/zohu/zutils"
 	"go.uber.org/zap"
 	"net/http"
 	"strings"
@@ -14,7 +15,13 @@ import (
 var (
 	EmptyData = make(map[string]string, 0)
 	EmptyList = make([]map[string]string, 0)
+
+	version = "1.0.0"
 )
+
+func SetVersion(v string) {
+	version = v
+}
 
 func Done(c *gin.Context, res *ResponseBean) {
 	defer func() {
@@ -59,7 +66,7 @@ func ParamErr(err error) *ResponseBean {
 	e, ok := err.(validator.ValidationErrors)
 	if !ok {
 		if err.Error() == "EOF" {
-			return ResponseErr(ErrParams.WithMessage("EOF"))
+			return ResponseErr(ErrParams.WithMessage("仅支持json或者xml"))
 		}
 		return ResponseErr(ErrParams.WithMessage(err.Error()))
 	}
@@ -80,12 +87,12 @@ func Response(code int, data interface{}, message string, detail string, kind Re
 		message = "success"
 	}
 	return &ResponseBean{
-		Kind:      kind,
-		Version:   "1.0",
-		Flag:      code,
-		Data:      data,
-		Message:   message,
-		Detail:    detail,
-		Timestamp: time.Now().UnixMilli(),
+		Kind:    kind,
+		Version: version,
+		Code:    code,
+		Data:    data,
+		Message: message,
+		Detail:  detail,
+		T:       time.Now().Format(zutils.FormatTime),
 	}
 }
