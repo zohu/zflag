@@ -8,17 +8,15 @@ require (
 	github.com/go-playground/universal-translator v0.18.1
 	github.com/go-playground/validator/v10 v10.12.0
 	github.com/zohu/zlog v0.0.9
-	github.com/zohu/zutils v0.0.2
+	github.com/zohu/zutils v0.0.9
 	go.uber.org/zap v1.24.0
 )
 
 require (
 	github.com/gin-contrib/sse v0.1.0 // indirect
 	github.com/goccy/go-json v0.9.11 // indirect
-	github.com/google/uuid v1.3.0 // indirect
 	github.com/jinzhu/inflection v1.0.0 // indirect
 	github.com/jinzhu/now v1.1.5 // indirect
-	github.com/jonboulle/clockwork v0.4.0 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/leodido/go-urn v1.2.3 // indirect
 	github.com/lestrrat-go/file-rotatelogs v2.4.0+incompatible // indirect
