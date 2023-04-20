@@ -59,7 +59,7 @@ func Success(data interface{}) *ResponseBean {
 }
 
 func ResponseErr(flag Flag) *ResponseBean {
-	return Response(flag.Code(), nil, flag.Message(), flag.Detail(), "")
+	return Response(flag.Code(), EmptyData, flag.Message(), flag.Detail(), "")
 }
 
 func ParamErr(err error) *ResponseBean {
